@@ -27,7 +27,7 @@ local function check_member_autorealm(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Welcome to your new realm !')
+      return send_large_msg(receiver, 'be realm jadide khodeton khosh omadin ! *Id Bot:@Max_antispam ||')
     end
   end
 end
@@ -57,7 +57,7 @@ local function check_member_realm_add(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Realm has been added!')
+      return send_large_msg(receiver, 'realm add shod! *Id Bot:@Max_antispam ||')
     end
   end
 end
@@ -121,7 +121,7 @@ local function check_member_modadd(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Group is added and you have been promoted as the owner ')
+      return send_large_msg(receiver, 'Gorooh add shod va shoma be onvane modir set shodid! *Id Bot:@Max_antispam || ')
     end
   end
 end
@@ -156,7 +156,7 @@ local function check_member_realmrem(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Realm has been removed!')
+      return send_large_msg(receiver, 'realm remove shod! *Id Bot:@Max_antispam ||')
     end
   end
 end
@@ -184,7 +184,7 @@ end
 --End Check Member
 local function show_group_settingsmod(msg, data, target)
  	if not is_momod(msg) then
-    	return "For moderators only!"
+    	return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   	end
   	local data = load_data(_config.moderation.data)
     if data[tostring(msg.to.id)] then
@@ -210,17 +210,17 @@ end
 
 local function set_descriptionmod(msg, data, target, about)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators ! *Id Bot:@Max_antispam ||"
   end
   local data_cat = 'description'
   data[tostring(target)][data_cat] = about
   save_data(_config.moderation.data, data)
-  return 'Set group description to:\n'..about
+  return 'set kardane etelaate gorooh be:\n'..about
 end
 local function get_description(msg, data)
   local data_cat = 'description'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'No description available.'
+    return 'etelaat mojood nist! *Id Bot:@Max_antispam ||'
   end
   local about = data[tostring(msg.to.id)][data_cat]
   local about = string.gsub(msg.to.print_name, "_", " ")..':\n\n'..about
@@ -228,199 +228,199 @@ local function get_description(msg, data)
 end
 local function lock_group_arabic(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'yes' then
-    return 'Arabic is already locked'
+    return 'Arabic ghofl ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Arabic has been locked'
+    return 'Arabic ghofl shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 local function unlock_group_arabic(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'no' then
-    return 'Arabic is already unlocked'
+    return 'Arabic baz ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Arabic has been unlocked'
+    return 'Arabic baz shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 local function lock_group_bots(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'yes' then
-    return 'Bots protection is already enabled'
+    return 'Anti bot faal ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_bots'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been enabled'
+    return 'Antibot faal shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 local function unlock_group_bots(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'no' then
-    return 'Bots protection is already disabled'
+    return 'Antibot gheyre faal ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_bots'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been disabled'
+    return 'Antibot gheyre faal shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 local function lock_group_namemod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_name_set = data[tostring(target)]['settings']['set_name']
   local group_name_lock = data[tostring(target)]['settings']['lock_name']
   if group_name_lock == 'yes' then
-    return 'Group name is already locked'
+    return 'Esme gorooh ghofl ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_name'] = 'yes'
     save_data(_config.moderation.data, data)
     rename_chat('chat#id'..target, group_name_set, ok_cb, false)
-    return 'Group name has been locked'
+    return 'Esme gorooh ghofl shod! *Id Bot:@Max_antispam ||'
   end
 end
 local function unlock_group_namemod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_name_set = data[tostring(target)]['settings']['set_name']
   local group_name_lock = data[tostring(target)]['settings']['lock_name']
   if group_name_lock == 'no' then
-    return 'Group name is already unlocked'
+    return 'Esme gorooh baz ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_name'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group name has been unlocked'
+    return 'Esme gorooh baz shod! *Id Bot:@Max_antispam ||'
   end
 end
 local function lock_group_floodmod(msg, data, target)
   if not is_owner(msg) then
-    return "Only admins can do it for now"
+    return "faghat adminha mitoonan in karo anjam bedan! *Id Bot:@Max_antispam ||"
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return 'Group flood is locked'
+    return 'Antispam faal ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Group flood has been locked'
+    return 'Antispam faal shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 local function unlock_group_floodmod(msg, data, target)
   if not is_owner(msg) then
-    return "Only admins can do it for now"
+    return "Faghat adminha mitoonan in karo anjam bedan ! *Id Bot:@Max_antispam ||"
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'no' then
-    return 'Group flood is not locked'
+    return 'Antispam baz ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group flood has been unlocked'
+    return 'Asnti spam baz shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 local function lock_group_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'yes' then
-    return 'Group members are already locked'
+    return 'Addmember baste ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_member'] = 'yes'
     save_data(_config.moderation.data, data)
   end
-  return 'Group members has been locked'
+  return 'Addmember baz shod! *Id Bot:@Max_antispam ||'
 end
 
 local function unlock_group_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "Faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'no' then
-    return 'Group members are not locked'
+    return 'Addmember baz ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_member'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group members has been unlocked'
+    return 'Addmember baz shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 
 local function set_public_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "Faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_member_lock = data[tostring(target)]['settings']['public']
   if group_member_lock == 'yes' then
-    return 'Group is already public'
+    return 'Gorooh hamegani ast! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['public'] = 'yes'
     save_data(_config.moderation.data, data)
   end
-  return 'Group is now: public'
+  return 'Gorooh : public'
 end
 
 local function unset_public_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "Faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local group_member_lock = data[tostring(target)]['settings']['public']
   if group_member_lock == 'no' then
-    return 'Group is not public'
+    return 'Gorooh hamegani nist! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['public'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group is now: not public'
+    return 'Gorooh: not public'
   end
 end
 
 local function lock_group_leave(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "Faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
   if leave_ban == 'yes' then
-    return 'Leaving users will be banned'
+    return 'Leave : ban shodan az gorooh! *Id Bot:@Max_antispam ||'
   else
     data[tostring(msg.to.id)]['settings']['leave_ban'] = 'yes'
     save_data(_config.moderation.data, data)
   end
-  return 'Leaving users will be banned'
+  return 'Leave : ban shodan az gorooh! *Id Bot:@Max_antispam ||'
 end
 
 local function unlock_group_leave(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "Faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
   if leave_ban == 'no' then
-    return 'Leaving users will not be banned'
+    return 'Leave : ban nashodan az gorooh! *Id Bot:@Max_antispam ||'
   else
     data[tostring(msg.to.id)]['settings']['leave_ban'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Leaving users will not be banned'
+    return 'Leave : ban nashodan az gorooh! *Id Bot:@Max_antispam ||'
   end
 end
 
@@ -430,31 +430,31 @@ local function unlock_group_photomod(msg, data, target)
   end
   local group_photo_lock = data[tostring(target)]['settings']['lock_photo']
   if group_photo_lock == 'no' then
-    return 'Group photo is not locked'
+    return 'Axe gorooh ghofl nist! *Id Bot:@Max_antispam ||'
   else
     data[tostring(target)]['settings']['lock_photo'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Group photo has been unlocked'
+    return 'Axe gorooh baz shod! *Id Bot:@Max_antispam ||'
   end
 end
 
 local function set_rulesmod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "Faghat baraye moderators! *Id Bot:@Max_antispam ||"
   end
   local data_cat = 'rules'
   data[tostring(target)][data_cat] = rules
   save_data(_config.moderation.data, data)
-  return 'Set group rules to:\n'..rules
+  return 'Ghavanine gorooh set shod be:\n'..rules
 end
 local function modadd(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "Khata! shoma admin nistid! *Id Bot:@Max_antispam ||"
   end
   local data = load_data(_config.moderation.data)
   if is_group(msg) then
-    return 'Group is already added.'
+    return 'Gorooh add shod ! *Id Bot:@Max_antispam ||.'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_modadd,{receiver=receiver, data=data, msg = msg})
@@ -462,11 +462,11 @@ end
 local function realmadd(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "Khata! shoma admin nistid! *Id Bot:@Max_antispam ||"
   end
   local data = load_data(_config.moderation.data)
   if is_realm(msg) then
-    return 'Realm is already added.'
+    return 'Realm add shod! *Id Bot:@Max_antispam ||.'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_realm_add,{receiver=receiver, data=data, msg = msg}) 
@@ -475,11 +475,11 @@ end
 function modrem(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "Khata! shoma admin nistid! *Id Bot:@Max_antispam ||"
   end
   local data = load_data(_config.moderation.data)
   if not is_group(msg) then
-    return 'Group is not added.'
+    return 'Gorooh add nashod! *Id Bot:@Max_antispam ||.'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_modrem,{receiver=receiver, data=data, msg = msg})
@@ -488,11 +488,11 @@ end
 function realmrem(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
-    return "You're not admin"
+    return "Khata! shoma admin nistid! *Id Bot:@Max_antispam ||"
   end
   local data = load_data(_config.moderation.data)
   if not is_realm(msg) then
-    return 'Realm is not added.'
+    return 'Realm add nashod! *Id Bot:@Max_antispam ||.'
   end
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_realmrem,{receiver=receiver, data=data, msg = msg})
@@ -500,7 +500,7 @@ end
 local function get_rules(msg, data)
   local data_cat = 'rules'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'No rules available.'
+    return 'Ghavanin yaft nashod! Admin az dastoore /setrules baraye tarife ghavanin estefade konad! *Id Bot:@Max_antispam ||.'
   end
   local rules = data[tostring(msg.to.id)][data_cat]
   local rules = 'Chat rules:\n'..rules
@@ -520,10 +520,10 @@ local function set_group_photo(msg, success, result)
     save_data(_config.moderation.data, data)
     data[tostring(msg.to.id)]['settings']['lock_photo'] = 'yes'
     save_data(_config.moderation.data, data)
-    send_large_msg(receiver, 'Photo saved!', ok_cb, false)
+    send_large_msg(receiver, 'Ax gozashte shod! *Id Bot:@Max_antispam ||', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
-    send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
+    send_large_msg(receiver, 'Khata! lotfan dobare talash konid! *Id Bot:@Max_antispam ||!', ok_cb, false)
   end
 end
 
@@ -531,14 +531,14 @@ local function promote(receiver, member_username, member_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'chat#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'Group is not added.')
+    return send_large_msg(receiver, 'Gorooh add nashode ast! *Id Bot:@Max_antispam ||.')
   end
   if data[group]['moderators'][tostring(member_id)] then
-    return send_large_msg(receiver, member_username..' is already a moderator.')
+    return send_large_msg(receiver, member_username..' moderator Ast.')
   end
   data[group]['moderators'][tostring(member_id)] = member_username
   save_data(_config.moderation.data, data)
-  return send_large_msg(receiver, member_username..' has been promoted.')
+  return send_large_msg(receiver, member_username..' Promote shod.')
 end
 
 local function promote_by_reply(extra, success, result)
@@ -559,14 +559,14 @@ local function demote(receiver, member_username, member_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'chat#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'Group is not added.')
+    return send_large_msg(receiver, 'Gorooh add nashode ast! *Id Bot:@Max_antispam ||.')
   end
   if not data[group]['moderators'][tostring(member_id)] then
-    return send_large_msg(receiver, member_username..' is not a moderator.')
+    return send_large_msg(receiver, member_username..' moderator nist!.')
   end
   data[group]['moderators'][tostring(member_id)] = nil
   save_data(_config.moderation.data, data)
-  return send_large_msg(receiver, member_username..' has been demoted.')
+  return send_large_msg(receiver, member_username..' demote shod!.')
 end
 
 local function demote_by_reply(extra, success, result)
@@ -591,7 +591,7 @@ local function setowner_by_reply(extra, success, result)
   data[tostring(msg.to.id)]['set_owner'] = tostring(msg.from.id)
       save_data(_config.moderation.data, data)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] setted ["..msg.from.id.."] as owner")
-      local text = msg.from.print_name:gsub("_", " ").." is the owner now"
+      local text = msg.from.print_name:gsub("_", " ").." be onvane modire gorooh set shod! *Id Bot:@Max_antispam ||"
       return send_large_msg(receiver, text)
 end
 
@@ -614,11 +614,11 @@ local function modlist(msg)
   local data = load_data(_config.moderation.data)
   local groups = "groups"
   if not data[tostring(groups)][tostring(msg.to.id)] then
-    return 'Group is not added.'
+    return 'Gorooh add nashode ast!.'
   end
   -- determine if table is empty
   if next(data[tostring(msg.to.id)]['moderators']) == nil then --fix way
-    return 'No moderator in this group.'
+    return ' moderator dar in gorooh vojood nadarad! baraye set kardane moderator az dastoore !promote ID estefade konid! *Id Bot:@Max_antispam ||.'
   end
   local i = 1
   local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
@@ -887,11 +887,11 @@ local function run(msg, matches)
     if matches[1] == 'setphoto' and is_momod(msg) then
       data[tostring(msg.to.id)]['settings']['set_photo'] = 'waiting'
       save_data(_config.moderation.data, data)
-      return 'Please send me new group photo now'
+      return 'Lotfan axe jadid ro ersal konid ! *Id Bot:@Max_antispam ||'
     end
     if matches[1] == 'promote' and not matches[2] then
       if not is_owner(msg) then
-        return "Only the owner can prmote new moderators"
+        return "Faghat modir(owner) mitavanad moderator set konad! *Id Bot:@Max_antispam ||"
       end
       if type(msg.reply_id)~="nil" then
           msgr = get_message(msg.reply_id, promote_by_reply, false)
@@ -902,7 +902,7 @@ local function run(msg, matches)
         return
       end
       if not is_owner(msg) then
-        return "Only owner can promote"
+        return "Faghat modir(owner) mitavanad admin set konad! *Id Bot:@Max_antispam ||"
       end
 	local member = matches[2]
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] promoted @".. member)
@@ -917,7 +917,7 @@ local function run(msg, matches)
     end
     if matches[1] == 'demote' and not matches[2] then
       if not is_owner(msg) then
-        return "Only the owner can demote moderators"
+        return "Faghat modir(owner) mitavanad admin set konad! *Id Bot:@Max_antispam ||"
       end
       if type(msg.reply_id)~="nil" then
           msgr = get_message(msg.reply_id, demote_by_reply, false)
@@ -928,10 +928,10 @@ local function run(msg, matches)
         return
       end
       if not is_owner(msg) then
-        return "Only owner can demote"
+        return "Faghat modir(owner) mitavanad admin set konad! *Id Bot:@Max_antispam ||"
       end
       if string.gsub(matches[2], "@", "") == msg.from.username and not is_owner(msg) then
-        return "You can't demote yourself"
+        return "Shoma nemitavanid khodetono demote konid! *Id Bot:@Max_antispam ||"
       end
 	local member = matches[2]
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] demoted @".. member)
@@ -945,93 +945,93 @@ local function run(msg, matches)
 	return res_user(username, promote_demote_res, cbres_extra)
     end
     if matches[1] == 'modlist' then
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group modlist")
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Darkhaste modliste gorooh...")
       return modlist(msg)
     end
     if matches[1] == 'about' then
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group description")
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Darkhaste etelaate gorooh...")
       return get_description(msg, data)
     end
     if matches[1] == 'rules' then
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group rules")
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Darkhaste ghavanine gorooh...")
       return get_rules(msg, data)
     end
     if matches[1] == 'set' then
       if matches[2] == 'rules' then
         rules = matches[3]
         local target = msg.to.id
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] has changed group rules to ["..matches[3].."]")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Ghavanine gorooh ro avaz kard be ~ ["..matches[3].."]")
         return set_rulesmod(msg, data, target)
       end
       if matches[2] == 'about' then
         local data = load_data(_config.moderation.data)
         local target = msg.to.id
         local about = matches[3]
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] has changed group description to ["..matches[3].."]")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Etelaate gorooh ro avaz kard be ~ ["..matches[3].."]")
         return set_descriptionmod(msg, data, target, about)
       end
     end
     if matches[1] == 'lock' then
       local target = msg.to.id
       if matches[2] == 'name' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked name ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Esme ghofl Shod! *Id Bot:@Max_antispam || ")
         return lock_group_namemod(msg, data, target)
       end
       if matches[2] == 'member' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked member ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] member ghofl Shod! *Id Bot:@Max_antispam || ")
         return lock_group_membermod(msg, data, target)
         end
       if matches[2] == 'flood' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Flood ghofl Shod! *Id Bot:@Max_antispam || ")
         return lock_group_floodmod(msg, data, target)
       end
       if matches[2] == 'arabic' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked arabic ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Arabic ghofl Shod! *Id Bot:@Max_antispam || ")
         return lock_group_arabic(msg, data, target)
       end
       if matches[2] == 'bots' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked bots ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Bot ghofl Shod! *Id Bot:@Max_antispam || ")
         return lock_group_bots(msg, data, target)
       end
     if matches[2] == 'leave' then
-       savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked leaving ")
+       savelog(msg.to.id, name_log.." ["..msg.from.id.."] Khorooj ghofl Shod! *Id Bot:@Max_antispam || ")
        return lock_group_leave(msg, data, target)
      end
    end
     if matches[1] == 'unlock' then 
       local target = msg.to.id
       if matches[2] == 'name' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked name ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Esme baz Shod! *Id Bot:@Max_antispam || ")
         return unlock_group_namemod(msg, data, target)
       end
       if matches[2] == 'member' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked member ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Member baz Shod! *Id Bot:@Max_antispam || ")
         return unlock_group_membermod(msg, data, target)
       end
       if matches[2] == 'photo' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked photo ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Axe gorooh baz Shod! *Id Bot:@Max_antispam || ")
         return unlock_group_photomod(msg, data, target)
       end
       if matches[2] == 'flood' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked flood ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Flood baz Shod! *Id Bot:@Max_antispam || ")
         return unlock_group_floodmod(msg, data, target)
       end
       if matches[2] == 'arabic' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked arabic ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Arabic baz Shod! *Id Bot:@Max_antispam || ")
         return unlock_group_arabic(msg, data, target)
       end
       if matches[2] == 'bots' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked bots ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Bot baz Shod! *Id Bot:@Max_antispam || ")
         return unlock_group_bots(msg, data, target)
       end
     if matches[2] == 'leave' then
-       savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked leaving ")
+       savelog(msg.to.id, name_log.." ["..msg.from.id.."] Khorooj baz Shod! *Id Bot:@Max_antispam || ")
        return unlock_group_leave(msg, data, target)
      end
    end
     if matches[1] == 'settings' then
       local target = msg.to.id
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group settings ")
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] Darkhaste tanzimate gorooh... ")
       return show_group_settingsmod(msg, data, target)
     end	
 
@@ -1054,9 +1054,9 @@ local function run(msg, matches)
       local function callback (extra , success, result)
         local receiver = 'chat#'..msg.to.id
         if success == 0 then
-           return send_large_msg(receiver, '*Error: Invite link failed* \nReason: Not creator.')
+           return send_large_msg(receiver, '*Khata: Linke invite Peyda nashod* \nDalil: Not creator.')
         end
-        send_large_msg(receiver, "Created a new link")
+        send_large_msg(receiver, "Linke jadid sakhte shod! *Id Bot:@Max_antispam ||")
         data[tostring(msg.to.id)]['settings']['set_link'] = result
         save_data(_config.moderation.data, data)
       end
@@ -1072,7 +1072,7 @@ local function run(msg, matches)
       if not group_link then 
         return "Create a link using /newlink first !"
       end
-       savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
+       savelog(msg.to.id, name_log.." ["..msg.from.id.."] Darkhaste linke gorooh... ["..group_link.."]")
       return "Group link:\n"..group_link
     end
     if matches[1] == 'setowner' and matches[2] then
@@ -1081,13 +1081,13 @@ local function run(msg, matches)
       end
       data[tostring(msg.to.id)]['set_owner'] = matches[2]
       save_data(_config.moderation.data, data)
-      savelog(msg.to.id, name_log.." ["..msg.from.id.."] set ["..matches[2].."] as owner")
-      local text = matches[2].." added as owner"
+      savelog(msg.to.id, name_log.." ["..msg.from.id.."] set ["..matches[2].."] be onvane modir! *Id Bot:@Max_antispam ||")
+      local text = matches[2].." Modir add shod!"
       return text
     end
     if matches[1] == 'setowner' and not matches[2] then
       if not is_owner(msg) then
-        return "only for the owner!"
+        return "Faghat baraye modir! *Id Bot:@Max_antispam ||"
       end
       if type(msg.reply_id)~="nil" then
           msgr = get_message(msg.reply_id, setowner_by_reply, false)
@@ -1096,68 +1096,68 @@ local function run(msg, matches)
     if matches[1] == 'owner' then
       local group_owner = data[tostring(msg.to.id)]['set_owner']
       if not group_owner then 
-        return "no owner,ask admins in support groups to set owner for your group"
+        return "Bedoone modir!,Beporsid az adminha dar poshtibanie gorooh baraye set kardane modir baraye goroohe shoma! *Id Bot:@Max_antispam ||"
       end
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
-      return "Group owner is ["..group_owner..']'
+      return "Modir gorooh ~ : ["..group_owner..']'
     end
     if matches[1] == 'setgpowner' then
       local receiver = "chat#id"..matches[2]
       if not is_admin(msg) then
-        return "For admins only!"
+        return "Faghat baraye adminha!"
       end
       data[tostring(matches[2])]['set_owner'] = matches[3]
       save_data(_config.moderation.data, data)
-      local text = matches[3].." added as owner"
+      local text = matches[3].." Modir set shod! *Id Bot:@Max_antispam ||"
       send_large_msg(receiver, text)
       return
     end
     if matches[1] == 'setflood' then 
       if not is_momod(msg) then
-        return "For moderators only!"
+        return "Faghat baraye moderators! *Id Bot:@Max_antispam ||"
       end
       if tonumber(matches[2]) < 5 or tonumber(matches[2]) > 20 then
-        return "Wrong number,range is [5-20]"
+        return "Shomareye morede nazare shoma bayad beyne [5ta20] bashad! *Id Bot:@Max_antispam ||"
       end
       local flood_max = matches[2]
       data[tostring(msg.to.id)]['settings']['flood_msg_max'] = flood_max
       save_data(_config.moderation.data, data)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] set flood to ["..matches[2].."]")
-      return 'Group flood has been set to '..matches[2]
+      return 'Floode gorooh set shod be '..matches[2]
     end
     if matches[1] == 'clean' then
       if not is_owner(msg) then
-        return "Only owner can clean"
+        return "Faghat modir mitavanad pak konad! *Id Bot:@Max_antispam ||"
       end
       if matches[2] == 'member' then
         if not is_owner(msg) then
-          return "Only admins can clean members"
+          return "Faghat adminha mitavanand clearmember konand! *Id Bot:@Max_antispam ||"
         end
         local receiver = get_receiver(msg)
         chat_info(receiver, cleanmember, {receiver=receiver})
       end
       if matches[2] == 'modlist' then
         if next(data[tostring(msg.to.id)]['moderators']) == nil then --fix way
-          return 'No moderator in this group.'
+          return ' moderator dar in gorooh vojood nadarad! *Id Bot:@Max_antispam ||.'
         end
         local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
         for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
           data[tostring(msg.to.id)]['moderators'][tostring(k)] = nil
           save_data(_config.moderation.data, data)
         end
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned modlist")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Modlist pak shod!")
       end
       if matches[2] == 'rules' then 
         local data_cat = 'rules'
         data[tostring(msg.to.id)][data_cat] = nil
         save_data(_config.moderation.data, data)
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned rules")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] Ghavanin pak shodand!")
       end
       if matches[2] == 'about' then 
         local data_cat = 'description'
         data[tostring(msg.to.id)][data_cat] = nil
         save_data(_config.moderation.data, data)
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned about")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] About pak shod!")
       end     
     end
     if matches[1] == 'kill' and matches[2] == 'chat' then
@@ -1170,7 +1170,7 @@ local function run(msg, matches)
           print("Closing Group..."),
           chat_info(receiver, killchat, {receiver=receiver})
       else
-          return 'This is a realm'
+          return 'In yek realm ast! *Id Bot:@Max_antispam ||'
       end
    end
     if matches[1] == 'kill' and matches[2] == 'realm' then
@@ -1183,7 +1183,7 @@ local function run(msg, matches)
         print("Closing Realm..."),
         chat_info(receiver, killrealm, {receiver=receiver})
      else
-        return 'This is a group'
+        return 'In yek gorooh ast! *Id Bot:@Max_antispam ||'
      end
    end
     if matches[1] == 'help' then
@@ -1205,7 +1205,7 @@ local function run(msg, matches)
     if matches[1] == 'kickinactive' then
       --send_large_msg('chat#id'..msg.to.id, 'I\'m in matches[1]')
 	    if not is_momod(msg) then
-	      return 'Only a moderator can kick inactive users'
+	      return 'Faghat yek moderator mitavanad inactive users ra kick konad! *Id Bot:@Max_antispam ||'
 	    end
 	    local num = 1
 	    if matches[2] then
