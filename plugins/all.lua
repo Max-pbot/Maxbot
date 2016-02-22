@@ -49,7 +49,7 @@ local function show_group_settings(target)
     end
   end
   local settings = data[tostring(target)]['settings']
-  local text = "Lock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nflood sensitivity : "..NUM_MSG_MAX
+  local text = "Esme gorooh ghofl shod!! *Id Bot:@Max_antispam || : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nflood sensitivity : "..NUM_MSG_MAX
   return text
 end
 
@@ -57,7 +57,7 @@ local function get_description(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'description'
   if not data[tostring(target)][data_cat] then
-    return 'No description available.'
+    return 'Etelaate gorooh vojood nadarad *Id Bot:@Max_antispam ||'
   end
   local about = data[tostring(target)][data_cat]
   return about
@@ -67,7 +67,7 @@ local function get_rules(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'rules'
   if not data[tostring(target)][data_cat] then
-    return 'No rules available.'
+    return 'Ghanooni baraye gorooh gozashte nashode ast!! *Id Bot:@Max_antispam ||'
   end
   local rules = data[tostring(target)][data_cat]
   return rules
@@ -78,10 +78,10 @@ local function modlist(target)
   local data = load_data(_config.moderation.data)
   local groups = 'groups'
   if not data[tostring(groups)] or not data[tostring(groups)][tostring(target)] then
-    return 'Group is not added or is Realm.'
+    return 'Gorooh add ya realm nashode ast!! *Id Bot:@Max_antispam ||'
   end
   if next(data[tostring(target)]['moderators']) == nil then
-    return 'No moderator in this group.'
+    return 'Dar in gorooh moderator vojood nadarad *Id Bot:@Max_antispam ||'
   end
   local i = 1
   local message = '\nList of moderators :\n'
