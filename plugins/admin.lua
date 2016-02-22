@@ -6,11 +6,11 @@ local function set_bot_photo(msg, success, result)
     os.rename(result, file)
     print('File moved to:', file)
     set_profile_photo(file, ok_cb, false)
-    send_large_msg(receiver, 'Photo changed!', ok_cb, false)
+    send_large_msg(receiver, 'Axe gorooh avaz shod! *Id Bot:@Max_antispam ||', ok_cb, false)
     redis:del("bot:photo")
   else
     print('Error downloading: '..msg.id)
-    send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
+    send_large_msg(receiver, 'Khata!Dobare emtehan konid!*Id Bot:@Max_antispam ||', ok_cb, false)
   end
 end
 local function parsed_url(link)
@@ -121,7 +121,7 @@ local function run(msg,matches)
     end
     if matches[1] == "setbotphoto" then
     	redis:set("bot:photo", "waiting")
-    	return 'Please send me bot photo now'
+    	return 'Lotfan axe morede nazaretoon ro ba reply ersal konid!*Id Bot:@Max_antispam ||'
     end
     if matches[1] == "markread" then
     	if matches[2] == "on" then
@@ -140,14 +140,14 @@ local function run(msg,matches)
     end
     if matches[1] == "block" then
     	if is_admin2(matches[2]) then
-    		return "You can't block admins"
+    		return "Shoma nemitavanid admin ra block konid!*Id Bot:@Max_antispam ||"
     	end
     	block_user("user#id"..matches[2],ok_cb,false)
-    	return "User blocked"
+    	return "User block shod *Id Bot:@Max_antispam ||"
     end
     if matches[1] == "unblock" then
     	unblock_user("user#id"..matches[2],ok_cb,false)
-    	return "User unblocked"
+    	return "User unblock shod *Id Bot:@Max_antispam ||"
     end
     if matches[1] == "import" then--join by group link
     	local hash = parsed_url(matches[2])
