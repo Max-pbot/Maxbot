@@ -17,7 +17,7 @@ local function chat_list(msg)
     local data = load_data(_config.moderation.data)
         local groups = 'groups'
         if not data[tostring(groups)] then
-                return 'No groups at the moment'
+                return 'Goroohi vojood nadarad ! *Id Bot:@Max_antispam ||'
         end
         local message = 'List of Groups:\n*Use /join (ID) to join*\n\n '
         for k,v in pairs(data[tostring(groups)]) do
@@ -54,10 +54,10 @@ local function run(msg, matches)
           local user_id = "user#id"..msg.from.id
    	  chat_add_user(chat_id, user_id, ok_cb, false)   
 	  local group_name = data[tostring(matches[2])]['settings']['set_name']	
-	  return "Added you to chat:\n\n👥"..group_name.." (ID:"..matches[2]..")"
+	  return "shoma add shodid be:\n\n👥"..group_name.." (ID:"..matches[2]..")"
         elseif matches[1] == 'join' and not data[tostring(matches[2])] then
 		
-         	return "Chat not found."
+         	return "Chat peyda nashod! *Id Bot:@Max_antispam ||."
         end
      if matches[1] == 'chats'then
        if is_admin(msg) and msg.to.type == 'chat' then
