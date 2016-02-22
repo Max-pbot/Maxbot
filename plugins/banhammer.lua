@@ -11,7 +11,7 @@ local function pre_process(msg)
       if banned or is_gbanned(user_id) then -- Check it with redis
       print('User is banned!')
       local name = user_print_name(msg.from)
-      savelog(msg.to.id, name.." ["..msg.from.id.."] is banned and kicked ! ")-- Save to logs
+      savelog(msg.to.id, name.." ["..msg.from.id.."] Ban va kick shod!! *Id Bot:@Max_antispam || ! ")-- Save to logs
       kick_user(user_id, msg.to.id)
       end
     end
@@ -50,7 +50,7 @@ local function pre_process(msg)
     if msg.action.user.username ~= nil then
       if string.sub(msg.action.user.username:lower(), -3) == 'bot' and not is_momod(msg) and bots_protection == "yes" then --- Will kick bots added by normal users
         local name = user_print_name(msg.from)
-          savelog(msg.to.id, name.." ["..msg.from.id.."] added a bot > @".. msg.action.user.username)-- Save to logs
+          savelog(msg.to.id, name.." ["..msg.from.id.."] bot add shod > @".. msg.action.user.username)-- Save to logs
           kick_user(msg.action.user.id, msg.to.id)
       end
     end
@@ -73,7 +73,7 @@ local function pre_process(msg)
     if banned or is_gbanned(user_id) then -- Check it with redis
       print('Banned user talking!')
       local name = user_print_name(msg.from)
-      savelog(msg.to.id, name.." ["..msg.from.id.."] banned user is talking !")-- Save to logs
+      savelog(msg.to.id, name.." ["..msg.from.id.."] ban shod User darhale harf zadan ast! *Id Bot:@Max_antispam || ")-- Save to logs
       kick_user(user_id, chat_id)
       msg.text = ''
     end
@@ -93,28 +93,28 @@ local function kick_ban_res(extra, success, result)
       local receiver = "chat#id"..chat_id
        if get_cmd == "kick" then
          if member_id == from_id then
-             return send_large_msg(receiver, "You can't kick yourself")
+             return send_large_msg(receiver, "Shoma nemitonid khodetono kick konin ! *Id Bot:@Max_antispam ||")
          end
          if is_momod2(member_id, chat_id) and not is_admin2(sender) then
-            return send_large_msg(receiver, "You can't kick mods/owner/admins")
+            return send_large_msg(receiver, "shoma nmitavanid mods/owner/admins ro kick konid! *Id Bot:@Max_antispam ||")
          end
          return kick_user(member_id, chat_id)
       elseif get_cmd == 'ban' then
         if is_momod2(member_id, chat_id) and not is_admin2(sender) then
-          return send_large_msg(receiver, "You can't ban mods/owner/admins")
+          return send_large_msg(receiver, "shoma nemitavanid mods/owner/admins ro ban konid! *Id Bot:@Max_antispam ||")
         end
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] banned')
+        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] ban shod *Id Bot:@Max_antispam ||')
         return ban_user(member_id, chat_id)
       elseif get_cmd == 'unban' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] unbanned')
+        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] Unban shod! *Id Bot:@Max_antispam ||')
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'User '..user_id..' unbanned'
       elseif get_cmd == 'banall' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally banned')
+        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] az global ban shod! *Id Bot:@Max_antispam ||')
         return banall_user(member_id, chat_id)
       elseif get_cmd == 'unbanall' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] un-globally banned')
+        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] az global unban shod! *Id Bot:@Max_antispam ||')
         return unbanall_user(member_id, chat_id)
       end
 end
@@ -138,7 +138,7 @@ local function run(msg, matches)
   local receiver = get_receiver(msg)
     if msg.to.type == 'chat' then
       local name = user_print_name(msg.from)
-      savelog(msg.to.id, name.." ["..msg.from.id.."] left using kickme ")-- Save to logs
+      savelog(msg.to.id, name.." ["..msg.from.id.."] Ba code /kickme left dad! *Id Bot:@Max_antispam || ")-- Save to logs
       chat_del_user("chat#id"..msg.to.id, "user#id"..msg.from.id, ok_cb, false)
     end
   end
@@ -169,13 +169,13 @@ local function run(msg, matches)
          	return
         end
         if not is_admin(msg) and is_momod2(matches[2], msg.to.id) then
-          	return "you can't ban mods/owner/admins"
+          	return "shoma nemitavanid mods/owner/admins ro ban konid! *Id Bot:@Max_antispam ||"
         end
         if tonumber(matches[2]) == tonumber(msg.from.id) then
-          	return "You can't ban your self !"
+          	return "shoma nemitavanid khodetono kick konid ! *Id Bot:@Max_antispam ||"
         end
         local name = user_print_name(msg.from)
-        savelog(msg.to.id, name.." ["..msg.from.id.."] baned user ".. matches[2])
+        savelog(msg.to.id, name.." ["..msg.from.id.."] User ban shod! *Id Bot:@Max_antispam || ".. matches[2])
         ban_user(user_id, chat_id)
       else
 		local cbres_extra = {
@@ -202,7 +202,7 @@ local function run(msg, matches)
         	local hash =  'banned:'..chat_id
         	redis:srem(hash, user_id)
         	local name = user_print_name(msg.from)
-        	savelog(msg.to.id, name.." ["..msg.from.id.."] unbaned user ".. matches[2])
+        	savelog(msg.to.id, name.." ["..msg.from.id.."] User unban shod ! *Id Bot:@Max_antispam || ".. matches[2])
         	return 'User '..user_id..' unbanned'
       else
 		local cbres_extra = {
@@ -230,15 +230,15 @@ if matches[1]:lower() == 'kick' then
 			return
 		end
 		if not is_admin(msg) and is_momod2(matches[2], msg.to.id) then
-			return "you can't kick mods/owner/admins"
+			return "shomna nemitavanid mods/owner/admins ra kick konid! *Id Bot:@Max_antispam ||"
 		end
 		if tonumber(matches[2]) == tonumber(msg.from.id) then
-			return "You can't kick your self !"
+			return "shoma nemitavanid khodetono kick konid! *Id Bot:@Max_antispam ||"
 		end
       		local user_id = matches[2]
       		local chat_id = msg.to.id
 		name = user_print_name(msg.from)
-		savelog(msg.to.id, name.." ["..msg.from.id.."] kicked user ".. matches[2])
+		savelog(msg.to.id, name.." ["..msg.from.id.."] User kick shod! *Id Bot:@Max_antispam ||".. matches[2])
 		kick_user(user_id, chat_id)
 	else
 		local cbres_extra = {
@@ -269,7 +269,7 @@ end
          	return false 
         end
         	banall_user(targetuser)
-       		return 'User ['..user_id..' ] globally banned'
+       		return 'User ['..user_id..' ] az global ban shod! *Id Bot:@Max_antispam ||'
       else
 	local cbres_extra = {
 		chat_id = msg.to.id,
@@ -289,7 +289,7 @@ end
           	return false 
         end
        		unbanall_user(user_id)
-        	return 'User ['..user_id..' ] removed from global ban list'
+        	return 'User ['..user_id..' ]az liste global ban remove shod! *Id Bot:@Max_antispam ||'
       else
 	local cbres_extra = {
 		chat_id = msg.to.id,
